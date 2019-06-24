@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import "assets/theme.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import "../node_modules/@mdi/font/css/materialdesignicons.css";
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "assets/style.scss";
