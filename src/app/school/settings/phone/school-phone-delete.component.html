@@ -1,0 +1,12 @@
+<div style="font-size: 20px">
+    Voulez vous supprimer le numéro <span class="font-weight-bold"> {{phone.value}}</span><br>
+    parmi les numéros de téléphone de l'établissements?
+</div>
+
+<div class="col-12 mt-4 px-0  text-right">
+    <button mat-button (click)="dialogRef.close()">Annuler</button>
+    <button mat-flat-button color="warn" class="ml-2"  (click)="delete()">
+        <i class="mdi mdi-delete"></i>
+        Supprimer
+    </button>
+</div>

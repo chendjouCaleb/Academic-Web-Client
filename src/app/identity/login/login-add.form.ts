@@ -4,9 +4,9 @@ import { AddConnectionModel } from "src/models/entity/connection.entity";
 export class LoginFormGroup extends EvFormGroup<AddConnectionModel> {
     constructor() {
         super({
-            email: new EvFormControl("adresse électronique", "email", "",  null),
-            password: new EvFormControl("mot de passe", "password", "", null),
-            isPersisted: new EvFormControl("maintenir la connexion", "isPersisted", null)
+            email: new EvFormControl("email", ""),
+            password: new EvFormControl("password", ""),
+            isPersisted: new EvFormControl("isPersisted", null)
         });
 
     }

@@ -5,7 +5,7 @@ import {CommonModule} from '@angular/common';
 import { ControlErrorComponent } from './form/control.error.component';
 
 @NgModule({
-  imports: [ BrowserModule, CommonModule],
+  imports: [ CommonModule],
     providers: [ AlertEmitter ],
     declarations: [ ControlErrorComponent],
   exports: [ ControlErrorComponent ]

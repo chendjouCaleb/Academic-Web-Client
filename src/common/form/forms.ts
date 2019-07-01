@@ -1,5 +1,5 @@
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import { validateSync} from 'class-validator';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { validateSync} from "class-validator";
 
 
 export class EvFormGroup<T> extends FormGroup {
@@ -33,13 +33,13 @@ export class EvFormGroup<T> extends FormGroup {
   addMessageErrors(errors) {
     Object.keys(errors).map(key => {
       if (this.getControl(key)) {
-        this.getControl(key).setErrors({'message': errors[key]});
+        this.getControl(key).setErrors({message: errors[key]});
       }
     });
   }
 
   doValidation() {
- 
+
     const result = validateSync(this.getModel());
 
     result.forEach( error => {
@@ -52,26 +52,24 @@ export class EvFormGroup<T> extends FormGroup {
 
 
 export class EvFormControl extends FormControl {
-  label: string;
   name: string;
 
-  constructor(label: string, name: string, value: any, validators: any = Validators.nullValidator) {
-    super(value, validators);
-    this.label = label;
+  constructor(name: string, value: any) {
+    super(value, Validators.nullValidator);
     this.name = name;
   }
 
   addMessageErrors(errors) {
     if (errors[this.name]) {
-      this.setErrors({'message': errors[this.name]});
+      this.setErrors({message: errors[this.name]});
     }
   }
 
   addError(message: string) {
-    if(!this.errors || !this.errors.message){
-      this.setErrors({'message': []});
+    if (!this.errors || !this.errors.message) {
+      this.setErrors({message: []});
     }
-    if(this.errors.message.indexOf(message) < 0){
+    if (this.errors.message.indexOf(message) < 0) {
       this.errors.message.push(message);
     }
   }

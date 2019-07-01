@@ -1,0 +1,31 @@
+<img [src]="school.imageURL" alt="Logo de l'établissement" class="img-fluid rounded">
+
+<h3>{{school.name}}</h3>
+<h4 class="text-uppercase font-weight-light">{{school.acronym}}</h4>
+
+<div *ngIf="school.isPublic">
+    établissement publique
+</div>
+
+<div *ngIf="!school.isPublic">
+    établissement privé
+</div>
+
+<div class="mt-3">
+    {{school.description}}
+</div>
+<div class="mt-3">
+        <i class="mdi mdi-localisation mdi-24px"></i> {{school.city}}, {{school.street}} {{school.postalCode}}
+    </div>
+
+<div class="mt-3" style="line-height: 24px">
+    <i class="mdi mdi-link mdi-24px"></i> <a [routerLink]="school.website" style="line-height: 24px"> {{school.website}}</a>
+</div>
+
+<div class="mt-3">
+    <i class="mdi mdi-calendar mdi-24px"></i> Inscrit le {{school.registrationDate}}
+</div>
+
+<div class="mt-3">
+    <i class="mdi mdi-birthdate mdi-24px"></i> Crée le {{school.creationDate}}
+</div>

@@ -7,16 +7,19 @@ import { PersistenceModule } from 'src/models/persistence/persistence.module';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ConnectionService } from './connection-service';
+import { IsAuthenticatedGuard, IsNotAuthenticatedGuard } from './authentication.guard';
+import { LogoutComponent } from './logout.component';
 
 const routes: Routes = [
-    { path: "login", component: LoginComponent }
+    { path: "login", component: LoginComponent, canActivate: [IsNotAuthenticatedGuard] },
+    { path: "logout", component: LogoutComponent, canActivate: [IsAuthenticatedGuard] }
 ]
 
 @NgModule({
     imports: [ BrowserModule, ReactiveFormsModule, RouterModule.forChild(routes), PersistenceModule, 
         CommonsModule, MatInputModule, MatButtonModule, MatCheckboxModule ],
-    declarations: [ LoginComponent ],
-    providers: [ConnectionService]
+    declarations: [ LoginComponent, LogoutComponent ],
+    providers: [ConnectionService, IsAuthenticatedGuard, IsNotAuthenticatedGuard]
 })
 export class IdentityModule {
 

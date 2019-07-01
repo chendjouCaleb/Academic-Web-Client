@@ -1,0 +1,9 @@
+<div>
+    <a routerLink="/schools/list">établissements</a> 
+    /
+    <a [routerLink]="['/schools', school.id, 'home']">{{school.acronym}}</a> 
+
+    <span *ngIf="end">
+        / {{end}}
+    </span>
+</div>

@@ -1,0 +1,38 @@
+<mat-toolbar color="primary"  id="app-toolbar">
+
+  <mat-toolbar-row>
+    <span>Academic</span>
+    <button mat-button class="ml-5 font-weight-bold" routerLink="/">
+      <i class="mdi mdi-home mdi-18px"></i> Accueil
+    </button>
+    <button mat-button routerLink="/schools/list">Écoles</button>
+
+    <span class="example-spacer" style=" flex: 1 1 auto"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="accountMenu">
+      <img src="assets/background/heic0515a.jpg" class="circle" style="width: 40px; height: 40px;" alt="">
+    </button>
+    <button mat-icon-button class="mdi-24px mdi mdi-bell"> </button>
+    <button mat-icon-button class="mdi-24px mdi mdi-menu" [matMenuTriggerFor]="appMenu"> </button>
+
+    <mat-menu #accountMenu="matMenu">
+      <div class="p-3">
+          <img src="assets/background/heic0515a.jpg" class="circle" style="width: 40px; height: 40px;" alt="">
+          {{auth.account.name}} {{auth.account.surname}}
+      </div>
+      <button mat-menu-item>
+        <i class="mdi mdi-account mdi-24px"></i>  Mon Compte
+      </button>
+      <button mat-menu-item routerLink="/logout">
+          <i class="mdi mdi-logout mdi-24px"></i>  Se déconnecter
+        </button>
+    </mat-menu>
+
+
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item>Settings</button>
+      <button mat-menu-item>Help</button>
+    </mat-menu>
+
+  </mat-toolbar-row>
+</mat-toolbar>

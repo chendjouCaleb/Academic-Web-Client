@@ -1,0 +1,42 @@
+<h3 class="border-bottom pb-2 mb-3">Adresse</h3>
+
+<form [formGroup]="form" (ngSubmit)="updateAddress()">
+
+  <div class="form-group">
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Région" formControlName="region">
+    </mat-form-field>
+    <app-control-error [control]="form.controls['region']"></app-control-error>
+  </div>
+
+  <div class="form-group">
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Ville" formControlName="city">
+    </mat-form-field>
+    <app-control-error [control]="form.controls['city']"></app-control-error>
+  </div>
+
+  <div class="col-12 px-0">
+      <div class="col-12 row px-0 mx-0">
+          <div class="form-group col-6 px-0">
+              <mat-form-field class="w-100">
+                  <input matInput  placeholder="Rue" formControlName="street">
+              </mat-form-field>
+            
+              <app-control-error [control]="form.controls['street']"></app-control-error>
+          </div>
+          <div class="form-group col-6 pr-0">
+              <mat-form-field class="w-100">
+                  <input matInput placeholder="Code postale" formControlName="postalCode">
+              </mat-form-field>
+              <app-control-error [control]="form.controls['postalCode']"></app-control-error>
+          </div>
+      </div>
+
+  </div>
+
+  <div class="col-12 p-0 m-0 text-right">
+      <button mat-button (click)="reset()">Annuler</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" class="ml-2">Mettre à jour</button>
+  </div>
+</form>

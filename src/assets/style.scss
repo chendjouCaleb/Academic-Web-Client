@@ -1,9 +1,7 @@
-
-
 body, html {
     height: 100%;
     font-weight: 400;
-  font-style: normal;
+    font-style: normal;
     font-size: 14px;
 }
 .text-small{
@@ -117,4 +115,8 @@ input.ng-dirty.ng-valid{
 
 .circle {
   border-radius: 50%;
+}
+
+.mat-button-wrapper {
+  font-weight: 500
 }

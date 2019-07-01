@@ -1,0 +1,19 @@
+<app-school-layout [school]="school" [title]="school.name + '&bullet paramètres'">
+        <div class="col-lg-6 mt-5">
+                <div class="mt-4">
+                        <app-school-settings-info [school]="school"></app-school-settings-info>
+                </div>
+
+                <div class="mt-4">
+                        <app-school-settings-address [school]="school"></app-school-settings-address>
+                </div>
+
+                <div class="mt-5">
+                        <app-school-email [school]="school"></app-school-email>
+                </div>
+
+                <div class="mt-5">
+                        <app-school-phone [school]="school"></app-school-phone>
+                </div>
+        </div>
+</app-school-layout>

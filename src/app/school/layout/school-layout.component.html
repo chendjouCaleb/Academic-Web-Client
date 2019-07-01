@@ -1,0 +1,15 @@
+<app-layout [title]="title">
+    <div id="app-sidebar">
+        <button mat-menu-item>Accueil</button>
+        <button mat-menu-item>Générales</button>
+        <button mat-menu-item>Publications</button>
+        <button mat-menu-item>Départements</button>
+
+    </div>
+    <div id="app-main-content">
+        <div class="col-12 py-2 border text-uppercase">
+            <app-school-path [school]="school"></app-school-path>
+        </div>
+        <ng-content></ng-content>
+    </div>
+</app-layout>

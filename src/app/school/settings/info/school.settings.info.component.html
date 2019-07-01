@@ -1,0 +1,72 @@
+<form [formGroup]="form">
+  <div class="col-12 px-0 form-header mb-4">
+    <h2 class="border-bottom pb-2 mb-2">Informations</h2>
+  </div>
+
+  <div class="form-group col-12 px-0 ">
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Nom de l'établissement" formControlName="name">
+    </mat-form-field>
+    <app-control-error [control]="form.controls['name']"></app-control-error>
+  </div>
+  <div class="form-group col-12 px-0 ">
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Sigle du nom de l'établissement" formControlName="acronym">
+    </mat-form-field>
+    <span class="text-small">
+      Le sigle est une abbréviation du nom de l'établissement.<br>
+      Il doit avoir entre 2 et 7 caractères.
+      Il doit contenir que des lettres, des chiffres, des espaces et des tirets('-').
+    </span>
+    <app-control-error [control]="form.controls['acronym']"></app-control-error>
+  </div>
+
+  <div class="form-group col-12 px-0 ">
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Site web de l'établissement" formControlName="website">
+    </mat-form-field>
+    <app-control-error [control]="form.controls['website']"></app-control-error>
+  </div>
+
+  <div class="form-group col-12 px-0 ">
+
+    <mat-form-field class="w-100">
+      <input matInput [max]="maxDate" [matDatepicker]="picker1" placeholder="Date de naissance"
+        formControlName="creationDate">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker1></mat-datepicker>
+      <app-control-error [control]="form.controls['creationDate']"></app-control-error>
+    </mat-form-field>
+
+    <app-control-error [control]="form.controls['creationDate']"></app-control-error>
+  </div>
+
+
+  <div class="form-group col px-0">
+
+    <mat-checkbox formControlName="isPublic" class="w-100"> établissement publique </mat-checkbox><br>
+
+    <div class="text-small col-12 px-0">
+      Choississez cette option si l'établissement à ajouter<br>
+      est un établissement publique.
+    </div>
+  </div>
+
+
+  <div class="form-group col-12 px-0 ">
+    <mat-form-field class="w-100">
+      <textarea matInput placeholder="Description sur l'établissement" formControlName="description">
+        </textarea>
+    </mat-form-field>
+    <app-control-error [control]="form.controls['description']"></app-control-error>
+  </div>
+
+
+  <div class="col-12 mt-4 px-0  text-right">
+    <button mat-button (click)="reset()">Annuler</button>
+    <button mat-flat-button color="primary" class="ml-2" [disabled]="form.invalid" (click)="update()">
+      <i class="mdi mdi-update"></i>
+      Mettre à jour
+    </button>
+  </div>
+</form>

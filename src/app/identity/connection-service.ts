@@ -13,6 +13,10 @@ export class ConnectionService extends Repository<Connection, number>{
     account: Account;
     isAthenticated = false;
 
+    get accessToken() {
+        return localStorage.getItem(ConnectionService.CONNECTION_TOKEN_PARAM);
+    }
+
     createFromAny(value: any): Connection {
         return Connection.createFromAny(value);
     }
@@ -26,6 +30,12 @@ export class ConnectionService extends Repository<Connection, number>{
         this.isAthenticated = true;
 
         return this.account;
+    }
+
+    logout() {
+        localStorage.removeItem(ConnectionService.CONNECTION_TOKEN_PARAM);
+        this.account = null;
+        this.isAthenticated = false;
     }
 
     init() {

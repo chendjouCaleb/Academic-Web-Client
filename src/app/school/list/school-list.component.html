@@ -1,0 +1,28 @@
+<app-layout title="Écoles">
+  <div class="col-12 row py-2">
+    <h1 class="col-6">
+      Établissements
+    </h1>
+    <div class="col-6 text-right px-0">
+      <button mat-stroked-button color="primary" class="text-uppercase" (click)="openAddDialog()">
+        <i class="mdi mdi-plus"></i> Créer une école
+      </button>
+    </div>
+  </div>
+  <div class="col-12 row">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-3" *ngFor="let school of schools">
+        <div class="col-12 border p-0">
+          <img src="assets/background/heic1302a.jpg" alt="image de l'école" class="img-fluid">
+
+          <h3 class="col-12 text-uppercase mt-3">{{school.acronym}}</h3>
+          <h4 class="col-12 mt-2">{{school.name}}</h4>
+
+          <div class="col-12 my-3">
+            <a [routerLink]="['/schools', school.id, 'home']" class="font-weight-medium">VOIR PLUS</a>
+          </div>
+        </div>
+    </div>
+  </div>
+</app-layout>
+
+

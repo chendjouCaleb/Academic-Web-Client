@@ -4,11 +4,11 @@ import { AddAccountModel } from "src/models/entity/account.entity";
 export class AccountAddFormGroup extends EvFormGroup<AddAccountModel> {
     constructor() {
         super({
-            name: new EvFormControl("nom", "name", "", null),
-            surname: new EvFormControl("prénom", "surname", "", null),
-            email: new EvFormControl("adresse électronique", "email", "",  null),
-            password: new EvFormControl("mot de passe", "password", "", null),
-            passwordMatcher: new EvFormControl("mot de passe(confirmation", "passwordMatcher", "", null)
+            name: new EvFormControl("name", ""),
+            surname: new EvFormControl("surname", ""),
+            email: new EvFormControl("email", ""),
+            password: new EvFormControl("password", ""),
+            passwordMatcher: new EvFormControl("passwordMatcher", "")
         });
 
     }

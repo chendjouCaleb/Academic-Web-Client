@@ -8,23 +8,24 @@
 
         <div class="form-group col">
             <mat-form-field class="w-100">
-                <input matInput type="text" placeholder="Adresse électronique" formControlName="email" (blur)="checkEmail()">
+                <input matInput type="text" placeholder="Adresse électronique" formControlName="email"
+                    (blur)="checkEmail()">
             </mat-form-field>
             <app-control-error [control]="form.controls['email']"></app-control-error>
         </div>
 
 
         <div class="form-group col">
-                <mat-form-field class="w-100">
-            <input matInput type="password" placeholder="Mot de passe" formControlName="password"
-                (blur)="checkPassword()">
+            <mat-form-field class="w-100">
+                <input matInput type="password" placeholder="Mot de passe" formControlName="password"
+                    (blur)="checkPassword()">
+            </mat-form-field>
             <app-control-error [control]="form.controls['password']"></app-control-error>
-        </mat-form-field>
         </div>
 
         <div class="form-group col">
-                <mat-checkbox formControlName="isPersisted"> Maintenir la connexion
-                </mat-checkbox>
+            <mat-checkbox formControlName="isPersisted"> Maintenir la connexion
+            </mat-checkbox>
         </div>
 
         <div class="col">

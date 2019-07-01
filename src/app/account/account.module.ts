@@ -5,10 +5,10 @@ import { AccountAddComponent } from "./add/account-add.component";
 import { Routes, RouterModule } from "@angular/router";
 import { CommonsModule } from "src/common/common.module";
 import { MatInputModule, MatButtonModule } from '@angular/material';
+import { IsNotAuthenticatedGuard } from '../identity/authentication.guard';
 
 const routes: Routes = [
-    { path: "", component: AccountAddComponent },
-    { path: "accounts/add", component: AccountAddComponent }
+    { path: "accounts/add", component: AccountAddComponent, canActivate: [ IsNotAuthenticatedGuard ] }
 ]
 
 @NgModule({

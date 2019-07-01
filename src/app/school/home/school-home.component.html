@@ -1,0 +1,13 @@
+<app-layout [title]="school.acronym">
+    <div class="col-12 row mt-3">
+        <div class="col-lg-3">
+            <app-school-info [school]="school"></app-school-info>
+        </div>
+
+        <div class="col-lg-9">
+            <div class="col-12">
+                <app-school-toolbar [school]="school"></app-school-toolbar>
+            </div>
+        </div>
+    </div>
+</app-layout>
