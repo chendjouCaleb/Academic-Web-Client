@@ -51,6 +51,14 @@ export class PhoneModel {
   public phone: string;
 }
 
+export class PasswordModel {
+  constructor(private _value: string) { this.password = _value; }
+
+  @IsNotEmpty()
+  @MinLength(6)
+  public password: string;
+}
+
 
 
 
@@ -119,6 +127,26 @@ export class PhoneForm extends EvFormGroup<PhoneModel> {
     return new PhoneModel(this.value.phone);
   }
 }
+
+
+
+export class PasswordForm extends EvFormGroup<PasswordModel> {
+  constructor() {
+    super({
+      password: new EvFormControl("password", "")
+    });
+  }
+
+  getModel(): PasswordModel {
+    return new PasswordModel(this.value.password);
+  }
+
+  getValue() {
+    return this.value.password;
+  }
+}
+
+
 
 export class AddressForm extends EvFormGroup<Address> {
   constructor(address: Address) {

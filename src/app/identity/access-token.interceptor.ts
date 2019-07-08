@@ -11,11 +11,12 @@ export class HttpAccessTokenInterceptor implements HttpInterceptor {
     constructor(private authorizer: ConnectionService ) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        request = request.clone({
-            headers: new HttpHeaders({
-                "Authorization": "Bearer " + this.authorizer.accessToken
-            })
-        });
+        if(this.authorizer.accessToken){
+            const headers = request.headers.set("Authorization", "Bearer " + this.authorizer.accessToken);
+            request = request.clone({
+                headers: headers
+            });
+        }
       return next.handle(request);
     }
 }

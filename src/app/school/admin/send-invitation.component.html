@@ -1,0 +1,42 @@
+<h4 class="mb-4 pb-2">Transférer l'administration de l'établissement</h4>
+
+<div class="col-12 alert alert-warning" style="width: 450px">
+    Vous êtes actuellement l'administrateur de cette établissement,
+    et vous souhaitez transférer vos privilèges d'administrateur.
+    Vous allez à présent envoyer une invitation de transfère à un compte
+    présent sur la plateforme. Si l'invitation est approuvée, le recepteur
+    devient immédiatement l'unique administrateur de cette établissement.
+</div>
+
+<form [formGroup]="emailForm">
+    <div class="form-group">
+        <mat-form-field class="w-100">
+            <input matInput placeholder="Adresse électronique du candidat" formControlName="email">
+        </mat-form-field>
+
+        <app-control-error [control]="emailForm.controls['email']"></app-control-error>
+    </div>
+
+
+    <div class="col-12 text-right">
+        <button mat-raised-button color="primary" (click)="findAccount()" [disabled]="emailForm.invalid">
+            <i class="mdi mdi-account-search"></i>Chercher le compte</button>
+    </div>
+</form>
+
+<div class="col-12 m-0 border border-success row my-3 py-2" *ngIf="account">
+    <div class="col-lg-2 col-md-3 p-0">
+        <img src="{{account.imageURL}}" alt="" width="60px" height="60px" class="rounded-circle bg-light p-1 border">
+    </div>
+    <div class="col-lg-9 col-md-9 p-0">
+        <h5 class="col-12 p-0 font-weight-bolder">{{account.name}} {{account.surname}}</h5>
+        <h6>{{account.email}}</h6>
+    </div>
+
+</div>
+
+<div class="col-12 p-0 m-0 text-right mt-3">
+    <button mat-button (click)="dialog.close()">Annuler</button>
+    <button mat-raised-button color="primary" class="mr-3" [disabled]="!account" (click)="send()">Envoyer
+        l'invitation</button>
+</div>

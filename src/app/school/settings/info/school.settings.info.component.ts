@@ -19,7 +19,7 @@ export class SchoolSettingsInfoComponent implements OnInit {
   maxDate = new Date(Date.now());
 
   constructor(private _repository: SchoolRepository, private alertEmitter: AlertEmitter) {
-    console.log(this.maxDate)
+
   }
 
   ngOnInit(): void {

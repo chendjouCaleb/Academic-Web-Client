@@ -1,4 +1,4 @@
-<mat-toolbar color="primary"  id="app-toolbar">
+<mat-toolbar color="primary" id="app-toolbar">
 
   <mat-toolbar-row>
     <span>Academic</span>
@@ -16,16 +16,22 @@
     <button mat-icon-button class="mdi-24px mdi mdi-menu" [matMenuTriggerFor]="appMenu"> </button>
 
     <mat-menu #accountMenu="matMenu">
-      <div class="p-3">
+      <div class="p-3" style="display: flex">
+        <div>
           <img src="assets/background/heic0515a.jpg" class="circle" style="width: 40px; height: 40px;" alt="">
-          {{auth.account.name}} {{auth.account.surname}}
+        </div>
+        <div>
+          <div class="col-12 font-weight-bold">{{auth.account.name}} {{auth.account.surname}}</div>
+          <div class="col-12 ">{{auth.account.email}}</div>
+        </div>
+
       </div>
       <button mat-menu-item>
-        <i class="mdi mdi-account mdi-24px"></i>  Mon Compte
+        <i class="mdi mdi-account mdi-24px"></i> Mon Compte
       </button>
       <button mat-menu-item routerLink="/logout">
-          <i class="mdi mdi-logout mdi-24px"></i>  Se déconnecter
-        </button>
+        <i class="mdi mdi-logout mdi-24px"></i> Se déconnecter
+      </button>
     </mat-menu>
 
 

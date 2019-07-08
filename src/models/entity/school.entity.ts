@@ -3,9 +3,11 @@ import { Member } from "./school-member.entity";
 import { List } from "@everest/collections";
 import { IsNotEmpty, Matches, MinLength, MaxLength, IsUrl } from "class-validator";
 import { Address } from './address.entity';
+import { Account } from './account.entity';
 
 export class School extends Entity<number> {
   name: string;
+  university: string;
   description: string;
   acronym: string;
   website: string;
@@ -27,6 +29,8 @@ export class School extends Entity<number> {
   emails: List<SchoolEmail>;
 
   phones: List<SchoolPhone>;
+
+  adminInvitations: List<SchoolAdminInvitation> = new List();
 
   isStudent = false;
   isTeacher = false;
@@ -56,6 +60,7 @@ export class School extends Entity<number> {
     info.creationDate = this.creationDate;
     info.isPublic = this.isPublic;
     info.website = this.website;
+    info.university = this.university;
 
     return info;
   }
@@ -67,6 +72,7 @@ export class School extends Entity<number> {
     this.creationDate = info.creationDate;
     this.isPublic = info.isPublic;
     this.website = info.website;
+    this.university = info.university;
   }
 
 
@@ -78,6 +84,7 @@ export class School extends Entity<number> {
     school.id = value.id;
     school.registrationDate = value.registrationDate;
     school.name = value.name;
+    school.university = value.university;
     school.description = value.description;
     school.acronym = value.acronym;
     school.website = value.website;
@@ -93,6 +100,10 @@ export class School extends Entity<number> {
 
     school.admin = SchoolAdmin.createFromAny(value.admin);
 
+    if (!value.imageURL) {
+      school.imageURL = "assets/background/heic0515a.jpg"
+  }
+
     if (value.emails) {
       school.emails = new List();
       value.emails.forEach(v => school.emails.add(SchoolEmail.createFromAny(v)));
@@ -101,6 +112,14 @@ export class School extends Entity<number> {
     if (value.phones) {
       school.phones = new List();
       value.phones.forEach(v => school.phones.add(SchoolPhone.createFromAny(v)));
+    }
+
+    if(value.adminInvitations) {
+      value.adminInvitations.forEach(v => {
+        const invitation = SchoolAdminInvitation.createFromAny(v);
+        invitation.school = school;
+        school.adminInvitations.add(invitation);
+      });
     }
     
     return school;
@@ -165,12 +184,47 @@ export class SchoolPhone extends Entity<number> {
   }
 }
 
+export class SchoolAdminInvitation extends Entity<number> {
+  school: School;
+  responseDate: Date;
+  state: string;
+  accountId: string;
+  account: Account;
+
+  static createFromAny(value: any): SchoolAdminInvitation {
+    if (!value) {
+      return null;
+    }
+    const invitation = new SchoolAdminInvitation();
+    invitation.id = value.id;
+    invitation.registrationDate = value.registrationDate;  
+    invitation.responseDate = value.responseDate;
+    invitation.accountId = value.accountId;
+    invitation.state = value.state;
+
+    if(value.account){
+      invitation.account = Account.createFromAny(value.account);
+    }
+
+    if(value.school) {
+      invitation.school = School.createFromAny(value.school);
+    }
+
+    return invitation;
+  }
+}
+
 
 export class AddSchoolModel {
   @IsNotEmpty()
   @MinLength(3)
   @Matches(/^[a-zàâçéèêëîïôûùüÿñæœ .-]*$/i, { message: "Contient des caractères non autorisés" })
   name: string;
+
+  @IsNotEmpty()
+  @MinLength(3)
+  @Matches(/^[a-zàâçéèêëîïôûùüÿñæœ .-]*$/i, { message: "Contient des caractères non autorisés" })
+  university: string;
 
   @IsNotEmpty()
   @MinLength(2, { message: "Le sigle doit contenir 2 lettres au minimun" })
@@ -187,6 +241,11 @@ export class SchoolInfo {
   @MinLength(3)
   @Matches(/^[a-zàâçéèêëîïôûùüÿñæœ .-]*$/i, { message: "Contient des caractères non autorisés" })
   name: string;
+
+  @IsNotEmpty()
+  @MinLength(3)
+  @Matches(/^[a-zàâçéèêëîïôûùüÿñæœ .-]*$/i, { message: "Contient des caractères non autorisés" })
+  university: string;
 
   description: string;
 

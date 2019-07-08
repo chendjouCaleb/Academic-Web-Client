@@ -4,8 +4,9 @@ import { SchoolAddComponent } from "./add/school-add.component";
 import { SchoolHomeComponent } from "./home/school-home.component";
 import { SchoolListComponent } from "./list/school-list.component";
 import { PersistenceModule } from "../../models/persistence/persistence.module";
-import { MatButtonModule, MatDialogModule, MatInputModule, MatTabsModule, MatMenuModule,MatNativeDateModule, MatCheckboxModule, MatDatepickerModule } from "@angular/material";
+import { MatButtonModule, MatDialogModule, MatInputModule, MatTabsModule, MatMenuModule, MatNativeDateModule, MatCheckboxModule, MatDatepickerModule } from "@angular/material";
 import { RouterModule, Routes } from "@angular/router";
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { IsAuthenticatedGuard } from "../identity/authentication.guard";
 import { LayoutModule } from "../layout/layout.module";
 import { CommonModule } from "@angular/common";
@@ -14,7 +15,7 @@ import { SchoolDataResolver } from './school.data.resolver';
 import { SchoolToolbarComponent } from './toolbar/school.toolbar.component';
 import { SchoolInfoComponent } from './info/school.info.component';
 import { SchoolSettingsAddressComponent } from './settings/address/school.settings.address.component';
-import { SchoolDeleteComponent } from './settings/delete/school.delete.component';
+
 import { SchoolEmailComponent } from './settings/email/school.email.component';
 import { SchoolSettingsInfoComponent } from './settings/info/school.settings.info.component';
 import { SchoolBannerComponent } from './banner/school-banner.component';
@@ -24,6 +25,10 @@ import { SchoolEmailDeleteComponent } from './settings/email/school-email-delete
 import { SchoolPhoneComponent } from './settings/phone/school.phone.component';
 import { SchoolPhoneDeleteComponent } from './settings/phone/school-phone-delete.component';
 import { SchoolLayoutComponent } from './layout/school-layout.component';
+import { SchoolImageComponent } from './settings/image/school-image.component';
+import { SendAdminInvitationComponent } from './admin/send-invitation.component';
+import { SchoolAdminInvitationComponent } from './common/admin-invitation-item/admin-invitation-item.component';
+import { SchoolDeleteComponent } from './delete/school-delete.component';
 
 const routes: Routes = [
   {
@@ -40,16 +45,21 @@ const routes: Routes = [
 @NgModule({
   imports: [CommonModule, CommonsModule, ReactiveFormsModule, FormsModule, PersistenceModule, MatDialogModule,
     MatButtonModule, MatInputModule, MatTabsModule, MatMenuModule, MatCheckboxModule, MatDatepickerModule,
-    MatNativeDateModule,
-    RouterModule.forChild(routes), LayoutModule],
+    MatNativeDateModule, MaterialFileInputModule, RouterModule.forChild(routes), LayoutModule],
+
   declarations: [SchoolAddComponent, SchoolHomeComponent, SchoolListComponent, SchoolToolbarComponent,
-    SchoolInfoComponent, SchoolSettingsAddressComponent, SchoolDeleteComponent, SchoolEmailComponent,
+    SchoolInfoComponent, SchoolSettingsAddressComponent,  SchoolEmailComponent,
     SchoolSettingsInfoComponent, SchoolBannerComponent, SchoolPathComponent, SchoolLayoutComponent,
-    SchoolEmailDeleteComponent, SchoolPhoneComponent, SchoolPhoneDeleteComponent,
-  SchoolSettingsComponent],
-  entryComponents: [SchoolAddComponent, SchoolEmailDeleteComponent, SchoolPhoneDeleteComponent],
+    SchoolEmailDeleteComponent, SchoolPhoneComponent, SchoolPhoneDeleteComponent, SchoolImageComponent,
+    SchoolSettingsComponent, SendAdminInvitationComponent, SchoolAdminInvitationComponent,
+    SchoolDeleteComponent],
+
+  entryComponents: [SchoolAddComponent, SchoolEmailDeleteComponent, SchoolPhoneDeleteComponent,
+    SendAdminInvitationComponent],
+
   providers: [SchoolDataResolver],
-  exports: [ SchoolPathComponent, SchoolLayoutComponent ]
+
+  exports: [SchoolPathComponent, SchoolLayoutComponent]
 })
 export class SchoolModule {
 

@@ -66,6 +66,10 @@ export class Account extends Entity<string> {
     account.aboutMe = value.aboutMe;
     account.website = value.website;
 
+    if(!account.imageURL){
+      account.imageURL = "assets/default-account.png";
+    }
+
     return account;
 
   }

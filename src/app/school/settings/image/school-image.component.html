@@ -1,0 +1,6 @@
+<img [src]="school.imageURL" alt="Logo de l'établissement" class="img-fluid rounded">
+<button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+<span *ngIf="fileToUpload">{{fileToUpload.name}}</span>
+<input hidden name="image" (change)="selectFile($event.target.files)" #fileInput type="file" id="file">
+
+<button type="button" mat-raised-button color="primary" (click)="uploadFile()">Mettre à jour</button>

@@ -9,6 +9,17 @@
     </mat-form-field>
     <app-control-error [control]="form.controls['name']"></app-control-error>
   </div>
+
+  <div class="form-group col-12 px-0 ">
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Université" formControlName="university">
+    </mat-form-field>
+    <span class="text-small">
+      Remplir ce champ si létablissement appartient à une université.
+    </span>
+    <app-control-error [control]="form.controls['university']"></app-control-error>
+  </div>
+
   <div class="form-group col-12 px-0 ">
     <mat-form-field class="w-100">
       <input matInput placeholder="Sigle du nom de l'établissement" formControlName="acronym">
@@ -19,8 +30,9 @@
       Il doit contenir que des lettres, des chiffres,<br> des espaces et des tirets('-').<br>
     </span>
     <app-control-error [control]="form.controls['acronym']"></app-control-error>
-
   </div>
+
+
   <div class="form-group col px-0">
 
     <mat-checkbox formControlName="isPublic" class="w-100"> établissement publique </mat-checkbox><br>

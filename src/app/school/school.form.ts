@@ -1,12 +1,13 @@
-import {EvFormControl, EvFormGroup} from "../../common/form/forms";
-import {AddSchoolModel, SchoolInfo} from "../../models/entity/school.entity";
+import { EvFormControl, EvFormGroup } from "../../common/form/forms";
+import { AddSchoolModel, SchoolInfo } from "../../models/entity/school.entity";
 
 export class AddSchoolForm extends EvFormGroup<AddSchoolModel> {
   constructor() {
     super({
       name: new EvFormControl("name", ""),
       acronym: new EvFormControl("acronym", ""),
-      isPublic: new EvFormControl("isPublic", "")
+      isPublic: new EvFormControl("isPublic", ""),
+      university: new EvFormControl("university", ""),
     });
 
   }
@@ -16,6 +17,7 @@ export class AddSchoolForm extends EvFormGroup<AddSchoolModel> {
     model.name = this.controls.name.value;
     model.acronym = this.controls.acronym.value;
     model.isPublic = this.controls.isPublic.value;
+    model.university = this.controls.university.value;
     return model;
   }
 }
@@ -24,6 +26,7 @@ export class SchoolInfoForm extends EvFormGroup<SchoolInfo> {
   constructor(info: SchoolInfo) {
     super({
       name: new EvFormControl("name", info.name),
+      university: new EvFormControl("university", info.university),
       acronym: new EvFormControl("acronym", info.acronym),
       description: new EvFormControl("description", info.description),
       creationDate: new EvFormControl("creationDate", info.creationDate),
@@ -41,6 +44,7 @@ export class SchoolInfoForm extends EvFormGroup<SchoolInfo> {
     model.creationDate = this.controls.creationDate.value;
     model.isPublic = this.controls.isPublic.value;
     model.website = this.controls.website.value;
+    model.university = this.controls.university.value;
     return model;
   }
 }

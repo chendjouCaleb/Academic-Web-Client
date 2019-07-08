@@ -12,7 +12,7 @@
   <div class="col-12 row">
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mt-3" *ngFor="let school of schools">
         <div class="col-12 border p-0">
-          <img src="assets/background/heic1302a.jpg" alt="image de l'école" class="img-fluid">
+          <img [src]="school.imageURL" alt="image de l'école" class="img-fluid">
 
           <h3 class="col-12 text-uppercase mt-3">{{school.acronym}}</h3>
           <h4 class="col-12 mt-2">{{school.name}}</h4>

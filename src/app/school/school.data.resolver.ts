@@ -27,6 +27,10 @@ export class SchoolDataResolver implements Resolve<School> {
                 school.imageURL = "assets/background/heic0515a.jpg"
             }
 
+            if(!school.admin.member.imageURL){
+                school.admin.member.imageURL = "assets/default-account.png";
+            }
+
             return school;
         }));
     }

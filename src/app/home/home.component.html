@@ -1,3 +1,21 @@
 <app-layout>
     <h1 class="bg-light">{{account?.name}} {{account?.surname}}</h1>
+
+    <div class="col-12 row">
+        <div class="col-lg-3">
+
+        </div>
+        <div class="col-lg-6">
+
+        </div>
+        <div class="col-lg-3">
+            <div class="bg-light p-2" *ngIf="schoolAdminInvitations.size > 0">
+                <h5 class="font-weight-bold">Demande d'administration d'établissement</h5>
+
+                <div class="mt-3" *ngFor="let item of schoolAdminInvitations">
+                    <app-account-school-admin [invitation]="item" (reject)="schoolAdminInvitations.remove(item)"></app-account-school-admin>
+                </div>
+            </div>
+        </div>
+    </div>
 </app-layout>
